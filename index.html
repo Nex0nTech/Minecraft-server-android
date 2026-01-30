@@ -140,7 +140,7 @@
 <body>
   <header>
     <h1>Running a Minecraft Server on Termux (Android)</h1>
-    <p>A simple, copy‑paste friendly guide for hosting Minecraft Java 1.19 on your phone.</p>
+    <p>A simple, copy paste friendly guide for hosting Minecraft Java 1.19 on your phone.</p>
   </header>
 
   <main>
@@ -148,8 +148,8 @@
       <h2>Overview</h2>
       <p>
         This guide walks you through setting up a Minecraft Java Edition 1.19 server
-        using <strong>Termux</strong> on Android. Every command is ready to copy with a single click,
-        and each step is explained so you understand what you are doing—not just pasting blindly.
+        using Termux on Android. Every command is ready to copy with a single click,
+        and each step is explained so you understand what you are doing, not just pasting blindly.
       </p>
 
       <div class="note">
@@ -159,9 +159,9 @@
     </section>
 
     <section class="step" id="step1">
-      <h2>Step 1 – Update and upgrade Termux packages</h2>
+      <h2>Step 1, Update and upgrade Termux packages</h2>
       <p>
-        Before installing anything, it’s good practice to update the package lists and upgrade
+        Before installing anything, it is good practice to update the package lists and upgrade
         existing packages. This ensures you get the latest versions and reduces compatibility issues.
       </p>
 
@@ -180,10 +180,10 @@
     </section>
 
     <section class="step" id="step2">
-      <h2>Step 2 – Install required packages</h2>
+      <h2>Step 2, Install required packages</h2>
       <p>
-        The Minecraft server requires Java to run. We’ll also install <strong>wget</strong> to download
-        the server file and <strong>nano</strong> as a simple text editor in case you want to edit configuration files later.
+        The Minecraft server requires Java to run. We also install wget to download
+        the server file and nano as a simple text editor in case you want to edit configuration files later.
       </p>
 
       <div class="code-block">
@@ -195,16 +195,16 @@
         <strong>Package breakdown:</strong>
       </p>
       <ul>
-        <li><strong>openjdk-17</strong> – Java 17, required to run modern Minecraft servers.</li>
-        <li><strong>wget</strong> – Command-line tool to download files from the internet.</li>
-        <li><strong>nano</strong> – Lightweight text editor for editing configuration files directly in Termux.</li>
+        <li><strong>openjdk-17</strong> Java 17, required to run modern Minecraft servers.</li>
+        <li><strong>wget</strong> Command line tool to download files from the internet.</li>
+        <li><strong>nano</strong> Lightweight text editor for editing configuration files directly in Termux.</li>
       </ul>
     </section>
 
     <section class="step" id="step3">
-      <h2>Step 3 – Create the server folder</h2>
+      <h2>Step 3, Create the server folder</h2>
       <p>
-        To keep things organized, you’ll create a dedicated directory for your Minecraft server.
+        To keep things organized, you create a dedicated directory for your Minecraft server.
         This is where the server JAR, world data, and configuration files will live.
       </p>
 
@@ -218,16 +218,16 @@ cd ~/mcserver</pre>
         <strong>Explanation:</strong>
       </p>
       <ul>
-        <li><strong>mkdir ~/mcserver</strong> creates a folder named <code>mcserver</code> in your home directory.</li>
+        <li><strong>mkdir ~/mcserver</strong> creates a folder named mcserver in your home directory.</li>
         <li><strong>cd ~/mcserver</strong> moves you into that folder so all future commands run inside it.</li>
       </ul>
     </section>
 
     <section class="step" id="step4">
-      <h2>Step 4 – Download the Minecraft 1.19 server JAR</h2>
+      <h2>Step 4, Download the Minecraft 1.19 server JAR</h2>
       <p>
-        Now you’ll download the official Minecraft server JAR for version 1.19 using <strong>wget</strong>.
-        The file will be saved as <code>minecraft_server.1.19.jar</code> inside your <code>mcserver</code> folder.
+        Now you download the official Minecraft server JAR for version 1.19 using wget.
+        The file will be saved as minecraft_server.1.19.jar inside your mcserver folder.
       </p>
 
       <div class="code-block">
@@ -239,11 +239,11 @@ cd ~/mcserver</pre>
       </div>
 
       <p>
-        <strong>What’s happening here:</strong>
+        <strong>What is happening here:</strong>
       </p>
       <ul>
         <li>The long URL points to the official Mojang server JAR for Minecraft 1.19.</li>
-        <li><strong>-O minecraft_server.1.19.jar</strong> tells <code>wget</code> to save the file with a clear, versioned name.</li>
+        <li><strong>-O minecraft_server.1.19.jar</strong> tells wget to save the file with a clear versioned name.</li>
       </ul>
 
       <div class="note">
@@ -252,11 +252,11 @@ cd ~/mcserver</pre>
     </section>
 
     <section class="step" id="step5">
-      <h2>Step 5 – Accept the EULA</h2>
+      <h2>Step 5, Accept the EULA</h2>
       <p>
-        Minecraft servers require you to accept the End User License Agreement (EULA) before they can run.
-        Normally, the server generates a <code>eula.txt</code> file on first launch and you edit it manually.
-        Here, you’re creating it directly and setting it to <code>true</code>.
+        Minecraft servers require you to accept the End User License Agreement EULA before they can run.
+        Normally, the server generates a eula.txt file on first launch and you edit it manually.
+        Here, you create it directly and set it to true.
       </p>
 
       <div class="code-block">
@@ -268,20 +268,20 @@ cd ~/mcserver</pre>
         <strong>Explanation:</strong>
       </p>
       <ul>
-        <li><strong>echo "eula=true"</strong> prints the text <code>eula=true</code>.</li>
-        <li><strong>&gt; eula.txt</strong> writes that text into a file named <code>eula.txt</code>, creating or overwriting it.</li>
+        <li><strong>echo "eula=true"</strong> prints the text eula=true.</li>
+        <li><strong>> eula.txt</strong> writes that text into a file named eula.txt, creating or overwriting it.</li>
       </ul>
 
       <div class="note">
-        <strong>Important:</strong> By setting <code>eula=true</code>, you are confirming that you have read and accepted
-        Mojang’s EULA. You should review it on the official Minecraft website.
+        <strong>Important:</strong> By setting eula=true, you confirm that you have read and accepted
+        Mojang EULA. You should review it on the official Minecraft website.
       </div>
     </section>
 
     <section class="step" id="step6">
-      <h2>Step 6 – Start the Minecraft server</h2>
+      <h2>Step 6, Start the Minecraft server</h2>
       <p>
-        With Java installed, the server JAR downloaded, and the EULA accepted, you’re ready to start the server.
+        With Java installed, the server JAR downloaded, and the EULA accepted, you are ready to start the server.
         The command below launches the server with specific memory settings and garbage collection options.
       </p>
 
@@ -297,17 +297,17 @@ cd ~/mcserver</pre>
         <strong>Flag breakdown:</strong>
       </p>
       <ul>
-        <li><strong>-Xms512M</strong> – Sets the minimum RAM for the server to 512 MB.</li>
-        <li><strong>-Xmx1789M</strong> – Sets the maximum RAM to 1789 MB (about 1.7 GB). Adjust if your device has more or less memory.</li>
-        <li><strong>-XX:+UseG1GC</strong> – Uses the G1 garbage collector, which is generally good for Minecraft servers.</li>
-        <li><strong>-XX:MaxGCPauseMillis=100</strong> – Aims to keep garbage collection pauses under 100 ms.</li>
-        <li><strong>-jar minecraft_server.1.19.jar</strong> – Tells Java which JAR file to run.</li>
-        <li><strong>nogui</strong> – Runs the server without the graphical interface (perfect for Termux).</li>
+        <li><strong>-Xms512M</strong> sets the minimum RAM for the server to 512 MB.</li>
+        <li><strong>-Xmx1789M</strong> sets the maximum RAM to 1789 MB about 1.7 GB. Adjust if your device has more or less memory.</li>
+        <li><strong>-XX:+UseG1GC</strong> uses the G1 garbage collector, which is generally good for Minecraft servers.</li>
+        <li><strong>-XX:MaxGCPauseMillis=100</strong> aims to keep garbage collection pauses under 100 ms.</li>
+        <li><strong>-jar minecraft_server.1.19.jar</strong> tells Java which JAR file to run.</li>
+        <li><strong>nogui</strong> runs the server without the graphical interface perfect for Termux.</li>
       </ul>
 
       <div class="note">
-        <strong>First launch:</strong> On the first run, the server will generate world files and configuration files.
-        This can take a bit of time—be patient. Once it says “Done” in the console, your server is up.
+        <strong>First launch:</strong> On the first run, the server generates world files and configuration files.
+        This can take a bit of time, be patient. Once it says Done in the console, your server is up.
       </div>
     </section>
 
@@ -315,15 +315,21 @@ cd ~/mcserver</pre>
       <h2>Connecting to your server</h2>
       <p>
         Once the server is running, you can connect from Minecraft Java Edition on another device
-        using your phone’s local IP address and the default port <strong>25565</strong>, as long as your network
+        using your phone local IP address and the default port 25565, as long as your network
         and firewall settings allow it.
       </p>
       <p>
-        If you want friends outside your network to join, you’ll need to look into port forwarding,
-        VPNs, or tunneling services—those are more advanced topics and depend on your router and setup.
+        If you want friends outside your network to join, you need to look into port forwarding,
+        VPNs, or tunneling services, those are more advanced topics and depend on your router and setup.
       </p>
     </section>
   </main>
+
+  <footer>
+    Minimal Termux Minecraft server guide, commands ready to copy, tweak, and make your own.
+    <br><br>
+    All rights reserved Semir
+  </footer>
 
   <script>
     document.addEventListener("click", function (e) {
@@ -361,9 +367,3 @@ cd ~/mcserver</pre>
   </script>
 </body>
 </html>
-<footer>
-    <p>Minimal Termux Minecraft server guide – commands ready to copy, tweak, and make your own.</p>
-    <p style="margin-top:0.5rem; color:#9ca3af; font-size:0.85rem;">
-        © Semir — All rights reserved
-    </p>
-</footer>
