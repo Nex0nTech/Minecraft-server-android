@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hosting a Minecraft Server on Termux (Android)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1020;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1f2937, #111827);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid #374151;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      color: #9ca3af;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      border-left: 4px solid #10b981;
+      padding-left: 0.6rem;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #e5e7eb;
+    }
+
+    p {
+      color: #d1d5db;
+    }
+
+    .note {
+      background: #111827;
+      border-left: 4px solid #3b82f6;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+
+    .code-block {
+      position: relative;
+      background: #020617;
+      border: 1px solid #1f2937;
+      border-radius: 0.5rem;
+      padding: 0.75rem 0.75rem 0.75rem;
+      margin: 1rem 0;
+      font-family: "Fira Code", Consolas, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: #111827;
+      border: 1px solid #4b5563;
+      color: #e5e7eb;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, transform 0.05s;
+    }
+
+    .copy-btn:hover {
+      background: #1f2937;
+      border-color: #9ca3af;
+    }
+
+    .copy-btn:active {
+      transform: scale(0.97);
+    }
+
+    .step {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed #1f2937;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin: 0.25rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid #111827;
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      main {
+        padding: 1.5rem 1rem 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Running a Minecraft Server on Termux (Android)</h1>
+    <p>A simple, copy‑paste friendly guide for hosting Minecraft Java 1.19 on your phone.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Overview</h2>
+      <p>
+        This guide walks you through setting up a Minecraft Java Edition 1.19 server
+        using <strong>Termux</strong> on Android. Every command is ready to copy with a single click,
+        and each step is explained so you understand what you are doing—not just pasting blindly.
+      </p>
+
+      <div class="note">
+        <strong>Note:</strong> You should already have Termux installed from a trusted source.
+        Make sure your device has enough free storage and a stable internet connection.
+      </div>
+    </section>
+
+    <section class="step" id="step1">
+      <h2>Step 1 – Update and upgrade Termux packages</h2>
+      <p>
+        Before installing anything, it’s good practice to update the package lists and upgrade
+        existing packages. This ensures you get the latest versions and reduces compatibility issues.
+      </p>
+
+      <div class="code-block">
+        <button class="copy-btn" data-copy="pkg update && pkg upgrade -y">Copy</button>
+        <pre>pkg update && pkg upgrade -y</pre>
+      </div>
+
+      <p>
+        <strong>What this does:</strong>
+      </p>
+      <ul>
+        <li><strong>pkg update</strong> refreshes the list of available packages.</li>
+        <li><strong>pkg upgrade -y</strong> upgrades installed packages to their latest versions without asking for confirmation.</li>
+      </ul>
+    </section>
+
+    <section class="step" id="step2">
+      <h2>Step 2 – Install required packages</h2>
+      <p>
+        The Minecraft server requires Java to run. We’ll also install <strong>wget</strong> to download
+        the server file and <strong>nano</strong> as a simple text editor in case you want to edit configuration files later.
+      </p>
+
+      <div class="code-block">
+        <button class="copy-btn" data-copy="pkg install openjdk-17 wget nano -y">Copy</button>
+        <pre>pkg install openjdk-17 wget nano -y</pre>
+      </div>
+
+      <p>
+        <strong>Package breakdown:</strong>
+      </p>
+      <ul>
+        <li><strong>openjdk-17</strong> – Java 17, required to run modern Minecraft servers.</li>
+        <li><strong>wget</strong> – Command-line tool to download files from the internet.</li>
+        <li><strong>nano</strong> – Lightweight text editor for editing configuration files directly in Termux.</li>
+      </ul>
+    </section>
+
+    <section class="step" id="step3">
+      <h2>Step 3 – Create the server folder</h2>
+      <p>
+        To keep things organized, you’ll create a dedicated directory for your Minecraft server.
+        This is where the server JAR, world data, and configuration files will live.
+      </p>
+
+      <div class="code-block">
+        <button class="copy-btn" data-copy="mkdir ~/mcserver&#10;cd ~/mcserver">Copy</button>
+        <pre>mkdir ~/mcserver
+cd ~/mcserver</pre>
+      </div>
+
+      <p>
+        <strong>Explanation:</strong>
+      </p>
+      <ul>
+        <li><strong>mkdir ~/mcserver</strong> creates a folder named <code>mcserver</code> in your home directory.</li>
+        <li><strong>cd ~/mcserver</strong> moves you into that folder so all future commands run inside it.</li>
+      </ul>
+    </section>
+
+    <section class="step" id="step4">
+      <h2>Step 4 – Download the Minecraft 1.19 server JAR</h2>
+      <p>
+        Now you’ll download the official Minecraft server JAR for version 1.19 using <strong>wget</strong>.
+        The file will be saved as <code>minecraft_server.1.19.jar</code> inside your <code>mcserver</code> folder.
+      </p>
+
+      <div class="code-block">
+        <button class="copy-btn"
+          data-copy="wget https://piston-data.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar -O minecraft_server.1.19.jar">
+          Copy
+        </button>
+        <pre>wget https://piston-data.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar -O minecraft_server.1.19.jar</pre>
+      </div>
+
+      <p>
+        <strong>What’s happening here:</strong>
+      </p>
+      <ul>
+        <li>The long URL points to the official Mojang server JAR for Minecraft 1.19.</li>
+        <li><strong>-O minecraft_server.1.19.jar</strong> tells <code>wget</code> to save the file with a clear, versioned name.</li>
+      </ul>
+
+      <div class="note">
+        <strong>Tip:</strong> If Mojang updates the server or the link changes in the future, you may need a new URL.
+      </div>
+    </section>
+
+    <section class="step" id="step5">
+      <h2>Step 5 – Accept the EULA</h2>
+      <p>
+        Minecraft servers require you to accept the End User License Agreement (EULA) before they can run.
+        Normally, the server generates a <code>eula.txt</code> file on first launch and you edit it manually.
+        Here, you’re creating it directly and setting it to <code>true</code>.
+      </p>
+
+      <div class="code-block">
+        <button class="copy-btn" data-copy="echo &quot;eula=true&quot; > eula.txt">Copy</button>
+        <pre>echo "eula=true" > eula.txt</pre>
+      </div>
+
+      <p>
+        <strong>Explanation:</strong>
+      </p>
+      <ul>
+        <li><strong>echo "eula=true"</strong> prints the text <code>eula=true</code>.</li>
+        <li><strong>&gt; eula.txt</strong> writes that text into a file named <code>eula.txt</code>, creating or overwriting it.</li>
+      </ul>
+
+      <div class="note">
+        <strong>Important:</strong> By setting <code>eula=true</code>, you are confirming that you have read and accepted
+        Mojang’s EULA. You should review it on the official Minecraft website.
+      </div>
+    </section>
+
+    <section class="step" id="step6">
+      <h2>Step 6 – Start the Minecraft server</h2>
+      <p>
+        With Java installed, the server JAR downloaded, and the EULA accepted, you’re ready to start the server.
+        The command below launches the server with specific memory settings and garbage collection options.
+      </p>
+
+      <div class="code-block">
+        <button class="copy-btn"
+          data-copy="java -Xms512M -Xmx1789M -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -jar minecraft_server.1.19.jar nogui">
+          Copy
+        </button>
+        <pre>java -Xms512M -Xmx1789M -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -jar minecraft_server.1.19.jar nogui</pre>
+      </div>
+
+      <p>
+        <strong>Flag breakdown:</strong>
+      </p>
+      <ul>
+        <li><strong>-Xms512M</strong> – Sets the minimum RAM for the server to 512 MB.</li>
+        <li><strong>-Xmx1789M</strong> – Sets the maximum RAM to 1789 MB (about 1.7 GB). Adjust if your device has more or less memory.</li>
+        <li><strong>-XX:+UseG1GC</strong> – Uses the G1 garbage collector, which is generally good for Minecraft servers.</li>
+        <li><strong>-XX:MaxGCPauseMillis=100</strong> – Aims to keep garbage collection pauses under 100 ms.</li>
+        <li><strong>-jar minecraft_server.1.19.jar</strong> – Tells Java which JAR file to run.</li>
+        <li><strong>nogui</strong> – Runs the server without the graphical interface (perfect for Termux).</li>
+      </ul>
+
+      <div class="note">
+        <strong>First launch:</strong> On the first run, the server will generate world files and configuration files.
+        This can take a bit of time—be patient. Once it says “Done” in the console, your server is up.
+      </div>
+    </section>
+
+    <section>
+      <h2>Connecting to your server</h2>
+      <p>
+        Once the server is running, you can connect from Minecraft Java Edition on another device
+        using your phone’s local IP address and the default port <strong>25565</strong>, as long as your network
+        and firewall settings allow it.
+      </p>
+      <p>
+        If you want friends outside your network to join, you’ll need to look into port forwarding,
+        VPNs, or tunneling services—those are more advanced topics and depend on your router and setup.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("click", function (e) {
+      const btn = e.target.closest(".copy-btn");
+      if (!btn) return;
+
+      const text = btn.getAttribute("data-copy");
+      if (!text) return;
+
+      navigator.clipboard.writeText(text.replace(/&#10;/g, "\n")).then(
+        () => {
+          const original = btn.textContent;
+          btn.textContent = "Copied!";
+          btn.style.borderColor = "#10b981";
+          btn.style.color = "#bbf7d0";
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.style.borderColor = "";
+            btn.style.color = "";
+          }, 1200);
+        },
+        () => {
+          const original = btn.textContent;
+          btn.textContent = "Failed";
+          btn.style.borderColor = "#ef4444";
+          btn.style.color = "#fecaca";
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.style.borderColor = "";
+            btn.style.color = "";
+          }, 1200);
+        }
+      );
+    });
+  </script>
+</body>
+</html>
+<footer>
+    <p>Minimal Termux Minecraft server guide – commands ready to copy, tweak, and make your own.</p>
+    <p style="margin-top:0.5rem; color:#9ca3af; font-size:0.85rem;">
+        © Semir — All rights reserved
+    </p>
+</footer>
