@@ -2,6 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>NexonTech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body {
+      background: #0b1020;
+      color: #e5e7eb;
+      font-family: system-ui;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: #111827;
+      border-bottom: 1px solid #1f2937;
+    }
+    .navbar a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .navbar a:hover {
+      color: #10b981;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    /* BLOG SECTION */
+    .blog-section {
+      margin-top: 2rem;
+    }
+    .blog-post {
+      background: #111827;
+      padding: 1.2rem;
+      border-radius: 0.5rem;
+      border: 1px solid #1f2937;
+      margin-bottom: 1rem;
+    }
+    .blog-post h2 {
+      margin-top: 0;
+      color: #10b981;
+    }
+
+    /* ADD BUTTON */
+    .add-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #10b981;
+      color: #111827;
+      font-size: 2rem;
+      padding: 0.4rem 1rem;
+      border-radius: 0.4rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .add-btn:hover {
+      background: #34d399;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="social.html">Social</a>
+</nav>
+
+<main>
+
+  <h1>Welcome to NexonTech</h1>
+  <p>Your space for guides, tools, and experiments.</p>
+
+  <!-- BLOG SECTION -->
+  <section class="blog-section">
+    <h1>Blog</h1>
+
+    <!-- FIRST BLOG POST: MINECRAFT -->
+    <div class="blog-post">
+      <h2>Minecraft</h2>
+      <p>
+        Minecraft è uno dei giochi più iconici e creativi mai esistiti.
+        In questa sezione troverai guide, trucchi, istruzioni e idee
+        per migliorare la tua esperienza di gioco, costruire meglio,
+        ottimizzare le prestazioni e scoprire nuovi modi di divertirti.
+      </p>
+    </div>
+
+    <!-- ADD BUTTON -->
+    <a href="submit.html" class="add-btn">+</a>
+  </section>
+
+</main>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
   <title>Hosting a Minecraft Server on Termux (Android)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
@@ -365,113 +474,5 @@ cd ~/mcserver</pre>
       );
     });
   </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>NexonTech</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <style>
-    body {
-      background: #0b1020;
-      color: #e5e7eb;
-      font-family: system-ui;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      display: flex;
-      gap: 1.5rem;
-      padding: 1rem 1.5rem;
-      background: #111827;
-      border-bottom: 1px solid #1f2937;
-    }
-    .navbar a {
-      color: #e5e7eb;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .navbar a:hover {
-      color: #10b981;
-    }
-
-    main {
-      padding: 2rem;
-    }
-
-    /* BLOG SECTION */
-    .blog-section {
-      margin-top: 2rem;
-    }
-    .blog-post {
-      background: #111827;
-      padding: 1.2rem;
-      border-radius: 0.5rem;
-      border: 1px solid #1f2937;
-      margin-bottom: 1rem;
-    }
-    .blog-post h2 {
-      margin-top: 0;
-      color: #10b981;
-    }
-
-    /* ADD BUTTON */
-    .add-btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      background: #10b981;
-      color: #111827;
-      font-size: 2rem;
-      padding: 0.4rem 1rem;
-      border-radius: 0.4rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .add-btn:hover {
-      background: #34d399;
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-<nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="blog.html">Blog</a>
-  <a href="social.html">Social</a>
-</nav>
-
-<main>
-
-  <h1>Welcome to NexonTech</h1>
-  <p>Your space for guides, tools, and experiments.</p>
-
-  <!-- BLOG SECTION -->
-  <section class="blog-section">
-    <h1>Blog</h1>
-
-    <!-- FIRST BLOG POST: MINECRAFT -->
-    <div class="blog-post">
-      <h2>Minecraft</h2>
-      <p>
-        Minecraft è uno dei giochi più iconici e creativi mai esistiti.
-        In questa sezione troverai guide, trucchi, istruzioni e idee
-        per migliorare la tua esperienza di gioco, costruire meglio,
-        ottimizzare le prestazioni e scoprire nuovi modi di divertirti.
-      </p>
-    </div>
-
-    <!-- ADD BUTTON -->
-    <a href="submit.html" class="add-btn">+</a>
-  </section>
-
-</main>
-
 </body>
 </html>
