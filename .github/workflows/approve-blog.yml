@@ -1,0 +1,47 @@
+name: Approve Blog
+
+on:
+  push:
+    paths:
+      - "pending.txt"
+
+jobs:
+  update-blog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Read pending blog
+        id: readfile
+        run: |
+          CONTENT=$(cat pending.txt)
+          echo "content<<EOF" >> $GITHUB_OUTPUT
+          echo "$CONTENT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Update index.html
+        run: |
+          TITLE=$(head -n 1 pending.txt)
+          ID=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+          # Aggiunge il blog alla lista
+          sed -i "/<!-- Qui si aggiungeranno automaticamente altri blog -->/i \
+          <div class=\"blog-item\">\n\
+            <a href=\"#$ID\">$TITLE</a>\n\
+            <p>New community blog post</p>\n\
+          </div>\n" index.html
+
+          # Aggiunge il contenuto completo
+          echo "<h2 id=\"$ID\">$TITLE</h2>" >> index.html
+          tail -n +2 pending.txt >> index.html
+          echo "" >> index.html
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "NexonTech Bot"
+          git config --global user.email "nexon.tech.mail@gmail.com"
+          git add index.html
+          git commit -m "Approved new blog: $TITLE"
+          git push
