@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>NexonTech Android Toolkit – Menu Structure Explained</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -11,21 +12,21 @@
 <header>
     <nav class="navbar">
         <a href="index.html">Home</a>
-        <a href="social.html">Social</a>
         <a href="blog.html">Blog</a>
+        <a href="social.html">Social</a>
     </nav>
 </header>
 
 <main>
-<div class="post">
 
-    <h1>NexonTech Android Toolkit – Menu Structure Explained</h1>
+<section class="post">
+
+    <h1>🧰 NexonTech Android Toolkit – Menu Structure Explained</h1>
 
     <p>
         The NexonTech Android Toolkit is a Windows batch utility designed to simplify ADB and Fastboot operations.
-        Instead of typing commands manually, the user interacts with a clean, color‑coded menu.  
-        Below is the exact structure of the menu as it appears inside the toolkit, followed by a detailed explanation
-        of what each option does.
+        Instead of typing commands manually, the user interacts with a clean, color-coded menu.
+        Below is the exact structure of the toolkit menu and a full explanation of every option.
     </p>
 
     <h2>Toolkit Menu Structure</h2>
@@ -58,113 +59,66 @@ Select an option:</code></pre>
     <h2>What Each Menu Option Does</h2>
 
     <h3>1) Install SDK Platform Tools</h3>
-    <p>
-        Downloads and installs the official Android Platform Tools into the user’s Downloads folder.
-        This enables all ADB and Fastboot operations.  
-        The toolkit automatically enters the <code>platform-tools</code> directory after installation.
-    </p>
+    <p>Downloads and installs official Android Platform Tools, enabling ADB and Fastboot commands.</p>
 
     <h3>2) Check ADB connection</h3>
-    <p>
-        Verifies whether the connected device is detected by ADB.  
-        Useful for confirming USB debugging and driver functionality.
-    </p>
+    <p>Verifies if the device is detected via ADB.</p>
 
     <h3>3) Reboot to bootloader</h3>
-    <p>
-        Reboots the device into fastboot/bootloader mode.  
-        Required before flashing partitions or performing low‑level operations.
-    </p>
+    <p>Reboots the device into fastboot/bootloader mode.</p>
 
     <h3>4) Reboot to recovery</h3>
-    <p>
-        Reboots the device into recovery mode (stock or custom).
-    </p>
+    <p>Reboots the device into recovery mode.</p>
 
     <h3>5) Install APK from PC</h3>
-    <p>
-        Installs an APK stored on the user’s computer directly onto the device.
-        The toolkit asks for the file path and handles the installation.
-    </p>
+    <p>Installs an APK from the computer onto the device.</p>
 
     <h3>6) Uninstall package (debloat)</h3>
-    <p>
-        Removes a package (app) from the device for the current user.  
-        Useful for debloating system apps, but removing the wrong package may break functionality.
-    </p>
+    <p>Removes a package for the current user. Use carefully.</p>
 
     <h3>7) List installed packages</h3>
-    <p>
-        Displays all installed package names on the device.  
-        Often used before debloating to identify the correct package name.
-    </p>
+    <p>Shows all installed package names.</p>
 
     <h3>8) Pull file from device</h3>
-    <p>
-        Copies a file from the device to the PC.  
-        The toolkit asks for the source path on the device and the destination path on the computer.
-    </p>
+    <p>Copies a file from the device to the PC.</p>
 
     <h3>9) Push file to device</h3>
-    <p>
-        Copies a file from the PC to the device.  
-        The user specifies both the source and destination paths.
-    </p>
+    <p>Copies a file from the PC to the device.</p>
 
     <h3>10) USB debugging instructions</h3>
-    <p>
-        Shows step‑by‑step instructions on how to enable USB debugging on Android.
-    </p>
+    <p>Displays steps to enable USB debugging.</p>
 
     <h3>11) Check Fastboot connection</h3>
-    <p>
-        Verifies whether the device is detected in fastboot mode.  
-        Essential before flashing a stock ROM.
-    </p>
+    <p>Verifies fastboot device detection.</p>
 
     <h3>12) Flash boot.img</h3>
-    <p>
-        Flashes the boot partition using a boot image provided by the user.  
-        Critical operation: using the wrong file may cause bootloops.
-    </p>
+    <p>Flashes the boot partition. Using the wrong file can cause bootloops.</p>
 
     <h3>13) Flash recovery.img</h3>
-    <p>
-        Flashes the recovery partition.  
-        Can install stock recovery or a custom one.  
-        Incorrect images may brick the device.
-    </p>
+    <p>Flashes the recovery partition. Wrong files may brick the device.</p>
 
     <h3>14) Extract boot.img from payload.bin</h3>
-    <p>
-        Extracts images (such as boot.img) from a <code>payload.bin</code> file found in many modern ROMs.
-        Useful for patching or flashing.
-    </p>
+    <p>Extracts images from payload.bin files used in modern ROMs.</p>
 
     <h3>15) Show device info</h3>
-    <p>
-        Displays detailed device information such as build properties, hardware info, and system configuration.
-    </p>
+    <p>Displays detailed device and system information.</p>
 
     <h3>16) Clear ADB keys</h3>
-    <p>
-        Deletes ADB authorization keys on the PC and restarts the ADB server.  
-        Forces the device to request authorization again.
-    </p>
+    <p>Resets ADB authorization keys and restarts the ADB server.</p>
 
     <h3>17) Restart ADB server</h3>
-    <p>
-        Restarts the ADB server without deleting keys.  
-        Useful when ADB stops detecting the device.
-    </p>
+    <p>Restarts the ADB server without removing keys.</p>
 
     <h3>18) Exit</h3>
-    <p>
-        Closes the toolkit and returns to the Windows desktop.
-    </p>
+    <p>Closes the toolkit.</p>
 
-</div>
+</section>
+
 </main>
+
+<footer>
+    <p>© NexonTech</p>
+</footer>
 
 </body>
 </html>
