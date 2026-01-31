@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submit a Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      background: #0b1020;
+      color: #e5e7eb;
+      font-family: system-ui;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: #111827;
+      border-bottom: 1px solid #1f2937;
+    }
+    .navbar a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .navbar a:hover {
+      color: #10b981;
+    }
+    main {
+      padding: 2rem;
+    }
+    textarea {
+      width: 100%;
+      height: 220px;
+      padding: 1rem;
+      background: #111827;
+      color: #e5e7eb;
+      border: 1px solid #374151;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      background: #10b981;
+      border: none;
+      border-radius: 0.4rem;
+      color: #111827;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background: #34d399;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="social.html">Social</a>
+</nav>
+
+<main>
+  <h1>Submit your guide</h1>
+  <p>Write your tutorial or explanation below. I will review it and approve it if appropriate.</p>
+
+  <textarea id="content" placeholder="Write your guide here..."></textarea>
+
+  <button onclick="sendEmail()">Send request</button>
+
+  <script>
+    function sendEmail() {
+      const text = document.getElementById('content').value;
+
+      const subject = encodeURIComponent("New Blog Submission");
+      const body = encodeURIComponent(
+        "A user submitted a new guide.\n\n" +
+        "Here is the content:\n\n" +
+        text +
+        "\n\n---\nSent from your website blog submission page."
+      );
+
+      window.location.href = `mailto:nexon.tech.mail@gmail.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+</main>
+
+</body>
+</html>
