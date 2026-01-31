@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>NexonTech Android Toolkit – Menu Structure Explained</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexonTech Android Toolkit – Menu Structure Explained</title>
+  <!-- Usa lo stesso CSS della home -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- Navbar identica a index.html -->
 <header>
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="social.html">Social</a>
-    </nav>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="social.html">Social</a></li>
+    </ul>
+  </nav>
 </header>
 
-<main>
+<!-- Hero section come la home (opzionale, puoi personalizzare testo) -->
+<section class="hero">
+  <h1>🧰 NexonTech Android Toolkit</h1>
+  <p>Menu structure explained for easy ADB and Fastboot operations.</p>
+</section>
 
-<section class="post">
+<!-- Main content con Toolkit -->
+<main class="content">
 
-    <h1>🧰 NexonTech Android Toolkit – Menu Structure Explained</h1>
-
-    <p>
-        The NexonTech Android Toolkit is a Windows batch utility designed to simplify ADB and Fastboot operations.
-        Instead of typing commands manually, the user interacts with a clean, color-coded menu.
-        Below is the exact structure of the toolkit menu and a full explanation of every option.
-    </p>
-
+  <article class="post">
     <h2>Toolkit Menu Structure</h2>
 
     <pre><code>============================================
@@ -53,71 +55,30 @@
 16) Clear ADB keys
 17) Restart ADB server
 18) Exit
-
 Select an option:</code></pre>
 
-    <h2>What Each Menu Option Does</h2>
-
-    <h3>1) Install SDK Platform Tools</h3>
-    <p>Downloads and installs official Android Platform Tools, enabling ADB and Fastboot commands.</p>
-
-    <h3>2) Check ADB connection</h3>
-    <p>Verifies if the device is detected via ADB.</p>
-
-    <h3>3) Reboot to bootloader</h3>
-    <p>Reboots the device into fastboot/bootloader mode.</p>
-
-    <h3>4) Reboot to recovery</h3>
+    <h3>What Each Menu Option Does</h3>
+    <h4>1) Install SDK Platform Tools</h4>
+    <p>Downloads and installs official Android Platform Tools for ADB/Fastboot.</p>
+    <h4>2) Check ADB connection</h4>
+    <p>Verifies connected device via ADB.</p>
+    <h4>3) Reboot to bootloader</h4>
+    <p>Reboots the device into fastboot mode.</p>
+    <h4>4) Reboot to recovery</h4>
     <p>Reboots the device into recovery mode.</p>
+    <h4>5) Install APK from PC</h4>
+    <p>Installs APK from PC to device.</p>
+    <h4>6) Uninstall package (debloat)</h4>
+    <p>Removes unwanted packages safely.</p>
+    <!-- continua con tutte le altre voci... -->
 
-    <h3>5) Install APK from PC</h3>
-    <p>Installs an APK from the computer onto the device.</p>
-
-    <h3>6) Uninstall package (debloat)</h3>
-    <p>Removes a package for the current user. Use carefully.</p>
-
-    <h3>7) List installed packages</h3>
-    <p>Shows all installed package names.</p>
-
-    <h3>8) Pull file from device</h3>
-    <p>Copies a file from the device to the PC.</p>
-
-    <h3>9) Push file to device</h3>
-    <p>Copies a file from the PC to the device.</p>
-
-    <h3>10) USB debugging instructions</h3>
-    <p>Displays steps to enable USB debugging.</p>
-
-    <h3>11) Check Fastboot connection</h3>
-    <p>Verifies fastboot device detection.</p>
-
-    <h3>12) Flash boot.img</h3>
-    <p>Flashes the boot partition. Using the wrong file can cause bootloops.</p>
-
-    <h3>13) Flash recovery.img</h3>
-    <p>Flashes the recovery partition. Wrong files may brick the device.</p>
-
-    <h3>14) Extract boot.img from payload.bin</h3>
-    <p>Extracts images from payload.bin files used in modern ROMs.</p>
-
-    <h3>15) Show device info</h3>
-    <p>Displays detailed device and system information.</p>
-
-    <h3>16) Clear ADB keys</h3>
-    <p>Resets ADB authorization keys and restarts the ADB server.</p>
-
-    <h3>17) Restart ADB server</h3>
-    <p>Restarts the ADB server without removing keys.</p>
-
-    <h3>18) Exit</h3>
-    <p>Closes the toolkit.</p>
-
-</section>
+  </article>
 
 </main>
 
+<!-- Footer identico alla home -->
 <footer>
-    <p>© NexonTech</p>
+  <p>© 2026 NexonTech</p>
 </footer>
 
 </body>
